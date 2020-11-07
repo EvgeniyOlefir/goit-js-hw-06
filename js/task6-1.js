@@ -25,16 +25,16 @@ console.log(getNum(object)) // 2
  */
 
 // Write code under this line
-const getUserNames = (array) => array;
+const getUserNames = (array) => array.map(({ name }) => name);
 
-// console.log(getUserNames(users));
+console.log(getUserNames(users));
 
-/* [
-  "Moore Hensley",
-  "Sharlene Bush",
-  "Ross Vazquez",
-  "Elma Head",
-  "Carey Barr",
-  "Blackburn Dotson",
-  "Sheree Anthony",
-] */
+// [
+//   "Moore Hensley",
+//   "Sharlene Bush",
+//   "Ross Vazquez",
+//   "Elma Head",
+//   "Carey Barr",
+//   "Blackburn Dotson",
+//   "Sheree Anthony",
+// ];
