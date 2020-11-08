@@ -1,4 +1,10 @@
-// const numbers = [5, 10, 15, 20, 25];
+const numbers = [5, 10, 15, 20, 25];
+
+const filteredNumbers = numbers.filter(function (number) {
+  return number > 15;
+});
+
+// console.log(filteredNumbers);
 
 // // numbers.forEach(function (element, index, array) {
 // //   console.log(element);
@@ -53,17 +59,78 @@ const players = [
  * Увеличиваем кол-во часов игрока по id
  */
 
-const playerIdToUpdate = "player-3";
+// const playerIdToUpdate = "player-3";
 
-const updatedPlayers = players.map(function (player) {
-  console.log(player.id);
+// const updatedPlayers = players.map(function (player) {
+//   console.log(player.id);
 
-  if (player.id === playerIdToUpdate) {
-    return {
-      ...player,
-      timePlayed: player.timePlayed + 50,
-    };
-  }
-});
+//   if (player.id === playerIdToUpdate) {
+//     return {
+//       ...player,
+//       timePlayed: player.timePlayed + 50,
+//     };
+//   }
+// });
 
-console.table(updatedPlayers);
+// console.table(updatedPlayers);
+
+/*
+ * Array.prototype.filter()
+ * - Поэлементо перебирает оригинальный массив
+ * - Возвращает новый массив (с элементами или пустой)
+ * - Добавляет в возвращаемый массив элементы которые удовлетворяют условию коллбек-функции
+ *    - если коллбек вернул true элемент добавляется в возвращаемый массив
+ *    - если коллбек вернул false элемент НЕ добавляется в возвращаемый массив
+ */
+
+/*
+ * Получаем массив всех онлайн игроков
+ */
+
+const onlinePlayers = players.filter(({ online }) => online);
+// console.table(onlinePlayers);
+
+/*
+ * Получаем массив всех оффлайн игроков
+ */
+
+const offlinePlayers = players.filter((player) => !player.online);
+// console.table(offlinePlayers);
+
+/*
+ * Получаем список хардкорных игроков с временем больше 250
+ */
+
+const hardcorePlayers = players.filter((player) => player.timePlayed > 250);
+// console.table(hardcorePlayers);
+
+/*
+ * Array.prototype.find()
+ * - Поэлементо перебирает оригинальный массив
+ * - Возвращает первый элемент удовлетворяющий условию или undefined
+ */
+/*
+ * Ищем игрока по id
+ */
+const playerIdToFind = "player-3";
+const playerWithId = players.find(({ id }) => id === playerIdToFind);
+// console.log(playerWithId);
+
+/*
+ * Array.prototype.every()
+ * - Поэлементо перебирает оригинальный массив
+ * - Возвращает true если все элементы массива удовлетворяют условию
+ */
+const isAllOnline = players.every((player) => player.online);
+// console.log('isAllOnline: ', isAllOnline);
+
+/*
+ * Array.prototype.some()
+ * - Поэлементо перебирает оригинальный массив
+ * - Возвращает true если хотя бы один элемент массива удовлетворяет условию
+ */
+const isAnyOnline = players.some((player) => player.online);
+console.log("isAnyOnline: ", isAnyOnline);
+
+const anyHardcorePlayers = players.some((player) => player.timePlayed > 400);
+console.log("anyHardcorePlayers: ", anyHardcorePlayers);
